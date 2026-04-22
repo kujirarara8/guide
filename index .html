@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Pages 使い方ガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf6ee;
+    --bg-elev: #f3ede0;
+    --bg-card: #ffffff;
+    --border: #e6dfcf;
+    --border-strong: #d4c9ae;
+    --text: #2a2a24;
+    --text-dim: #595950;
+    --text-muted: #8a8a80;
+    --accent: #8b6f3d;
+    --accent-dim: #b89a6a;
+    --leaf: #5a7d4e;
+    --danger: #b85a44;
+    --shadow: 0 2px 16px rgba(60, 50, 30, 0.06);
+    --shadow-strong: 0 4px 24px rgba(60, 50, 30, 0.1);
+    --display: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+    --sans: 'Noto Sans JP', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.9;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 10%, rgba(184, 154, 106, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 85% 90%, rgba(90, 125, 78, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  header {
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(36px, 5.5vw, 60px);
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  h1 .accent-text { color: var(--accent); }
+
+  .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-dim);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+  }
+
+  .header-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px 0 0;
+    color: var(--accent);
+    opacity: 0.5;
+    font-size: 14px;
+  }
+
+  .header-ornament::before,
+  .header-ornament::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  main { padding: 80px 0 120px; }
+
+  .section {
+    margin-bottom: 100px;
+    position: relative;
+  }
+
+  .section-number {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.35em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+    color: var(--text);
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--text);
+    margin: 48px 0 20px;
+    letter-spacing: 0.03em;
+  }
+
+  h4 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--accent);
+    margin: 24px 0 12px;
+    letter-spacing: 0.08em;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .lead {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 2;
+    color: var(--text);
+    padding: 32px 40px;
+    border-left: 3px solid var(--accent);
+    background: linear-gradient(90deg, rgba(184, 154, 106, 0.08), transparent);
+    margin-bottom: 40px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 40px 0;
+  }
+
+  .benefit {
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+  }
+
+  .benefit:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .benefit-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 38px;
+    color: var(--accent);
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    opacity: 0.25;
+  }
+
+  .benefit-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 10px;
+    padding-right: 60px;
+    letter-spacing: 0.03em;
+  }
+
+  .benefit-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.85;
+  }
+
+  .steps { margin: 40px 0; }
+
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-marker {
+    width: 56px;
+    height: 56px;
+    background: var(--accent);
+    color: var(--bg-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 22px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(139, 111, 61, 0.25);
+  }
+
+  .step-body h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 21px;
+  }
+
+  .step-body p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-dim);
+  }
+
+  .step-body ul {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .step-body li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.9;
+  }
+
+  .step-body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 12px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  code {
+    font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: rgba(139, 111, 61, 0.1);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+
+  .code-block {
+    font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: #2a2a24;
+    color: #e8e4d8;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid var(--accent);
+    overflow-x: auto;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .code-block .comment {
+    color: #9bb58a;
+    font-style: italic;
+  }
+
+  .table-wrapper {
+    margin: 32px 0;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th {
+    background: var(--bg-elev);
+    color: var(--accent);
+    font-family: var(--display);
+    font-weight: 700;
+    text-align: left;
+    padding: 16px 20px;
+    border-bottom: 2px solid var(--accent);
+    letter-spacing: 0.08em;
+    font-size: 13px;
+  }
+
+  td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.8;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  td:first-child {
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .callout {
+    padding: 24px 28px;
+    margin: 28px 0;
+    border-left: 3px solid var(--leaf);
+    background: rgba(90, 125, 78, 0.07);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .callout-tip {
+    border-left-color: var(--accent);
+    background: rgba(184, 154, 106, 0.08);
+  }
+
+  .callout-warn {
+    border-left-color: var(--danger);
+    background: rgba(184, 90, 68, 0.07);
+  }
+
+  .callout-label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--leaf);
+    margin-bottom: 8px;
+  }
+
+  .callout-tip .callout-label { color: var(--accent); }
+  .callout-warn .callout-label { color: var(--danger); }
+
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-dim);
+  }
+
+  .trouble {
+    margin: 20px 0;
+    padding: 24px 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--danger);
+    border-radius: 0 8px 8px 0;
+    box-shadow: var(--shadow);
+  }
+
+  .trouble-title {
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--danger);
+    margin-bottom: 14px;
+    font-size: 15px;
+    letter-spacing: 0.03em;
+  }
+
+  .trouble-solutions { list-style: none; }
+
+  .trouble-solutions li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.9;
+  }
+
+  .trouble-solutions li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--leaf);
+    font-weight: 700;
+  }
+
+  .summary {
+    margin: 60px 0;
+    padding: 50px 48px;
+    background:
+      linear-gradient(135deg, rgba(184, 154, 106, 0.08), rgba(90, 125, 78, 0.04)),
+      var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: var(--shadow-strong);
+  }
+
+  .summary h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 0 28px;
+    color: var(--accent);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .summary ol {
+    list-style: none;
+    counter-reset: summary-counter;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .summary ol li {
+    counter-increment: summary-counter;
+    padding: 16px 0 16px 54px;
+    position: relative;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text);
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .summary ol li:last-child { border-bottom: none; }
+
+  .summary ol li::before {
+    content: counter(summary-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 16px;
+    font-family: var(--display);
+    font-weight: 900;
+    color: var(--accent);
+    font-size: 18px;
+  }
+
+  footer {
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  footer .ornament {
+    color: var(--accent);
+    margin: 0 14px;
+    opacity: 0.6;
+  }
+
+  .toc {
+    padding: 32px 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    margin: 60px 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+  }
+
+  .toc-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .toc ol li {
+    counter-increment: toc;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--border);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .toc ol li:last-child { border-bottom: none; }
+
+  .toc ol li a {
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    transition: color 0.2s;
+  }
+
+  .toc ol li a:hover { color: var(--accent); }
+
+  .toc ol li a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--display);
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  .bullet-list {
+    list-style: none;
+    margin: 24px 0;
+  }
+
+  .bullet-list li {
+    padding: 10px 0 10px 26px;
+    position: relative;
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 14px;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section, header {
+    animation: fadeInUp 0.8s ease-out backwards;
+  }
+
+  header { animation-delay: 0.1s; }
+  .section:nth-child(1) { animation-delay: 0.2s; }
+  .section:nth-child(2) { animation-delay: 0.3s; }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    header { padding: 60px 0 50px; }
+    .lead { padding: 24px; font-size: 15px; }
+    .step { grid-template-columns: 1fr; gap: 16px; }
+    .step-marker { width: 48px; height: 48px; font-size: 18px; }
+    .summary { padding: 32px 24px; }
+    .benefit-num { font-size: 30px; top: 16px; right: 20px; }
+    .benefit { padding: 24px; }
+    th, td { padding: 12px 14px; font-size: 13px; }
+    .toc { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="eyebrow">for creators</div>
+    <h1>GitHub Pages<br><span class="accent-text">はじめかたガイド</span></h1>
+    <p class="subtitle">
+      作ったものを、世界にひらく。<br>
+      無料で、安全に、スマートに公開するための丁寧な手引き。
+    </p>
+    <div class="header-ornament">✦</div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <nav class="toc">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#what">GitHubとは？</a></li>
+        <li><a href="#why">GitHubを使う意味</a></li>
+        <li><a href="#setup">事前準備：アカウントを作る</a></li>
+        <li><a href="#basic">基本操作：ページを公開する</a></li>
+        <li><a href="#advanced">応用：更新・追加・削除・履歴</a></li>
+        <li><a href="#share">公開したページを共有する</a></li>
+        <li><a href="#public">外部公開・お客様に見せるときのポイント</a></li>
+        <li><a href="#trouble">よくあるつまずきと解決法</a></li>
+        <li><a href="#ai">困ったら、AIに聞くのもおすすめ</a></li>
+        <li><a href="#summary">まとめ</a></li>
+      </ol>
+    </nav>
+
+    <section class="section" id="what">
+      <div class="section-number">Chapter 01</div>
+      <h2>GitHubとは？</h2>
+
+      <p class="lead">
+        ひとことで言うと、インターネット上の<strong>「ファイル保管庫＋共同作業スペース」</strong>。<br>
+        世界中のクリエイターやエンジニアが使う、業界標準のプラットフォームです。
+      </p>
+
+      <ul class="bullet-list">
+        <li>HTMLファイル、画像、コードなどを保存・管理できるサービス</li>
+        <li>「Git（変更履歴を管理する仕組み）」＋「Hub（みんなが集まる場所）」という意味</li>
+        <li>基本機能はすべて<strong>無料</strong>で使える</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">Image</div>
+        <p>Googleドライブのクリエイター版のような存在。ただし「誰が・いつ・どこを変えたか」がすべて履歴として残るのが大きな特徴です。</p>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="section-number">Chapter 02</div>
+      <h2>GitHubを使う意味</h2>
+
+      <p class="lead">
+        GitHubの中でも、特に便利なのが<strong>GitHub Pages</strong>という機能。<br>
+        これを使えば、HTMLファイルをそのまま<strong>Webページとして公開</strong>できます。
+      </p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-num">01</div>
+          <div class="benefit-title">無料でWebページが公開できる</div>
+          <div class="benefit-desc">
+            HTMLをアップロードするだけで、自分専用のURLが発行され、誰でもアクセスできるページになります。サーバー契約もドメイン契約も不要です。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">02</div>
+          <div class="benefit-title">AIで作ったHTMLをそのまま公開できる</div>
+          <div class="benefit-desc">
+            ClaudeやChatGPTで生成したHTMLや資料、シミュレーターなどを、数分でWebページ化してシェアできます。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">03</div>
+          <div class="benefit-title">変更履歴がすべて残る</div>
+          <div class="benefit-desc">
+            「前のバージョンに戻したい」「いつ誰が変えたか確認したい」がすぐできます。ミスをしても元に戻せる安心感があります。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">04</div>
+          <div class="benefit-title">複数人で同じプロジェクトを管理できる</div>
+          <div class="benefit-desc">
+            チームメンバーと同じファイルを共同編集でき、バージョンがバラバラにならずに一元管理できます。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">05</div>
+          <div class="benefit-title">安定していて長期運用に向いている</div>
+          <div class="benefit-desc">
+            他の無料公開サービスに比べてアクセス制限が緩く、長く使い続けられる安定性があります。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="setup">
+      <div class="section-number">Chapter 03</div>
+      <h2>事前準備：アカウントを作る</h2>
+      <p style="color: var(--text-dim); margin-bottom: 32px;">初回のみ、5分ほどで完了します。</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-marker">i</div>
+          <div class="step-body">
+            <h3>サインアップ</h3>
+            <p>GitHubの公式サイトにアクセスし、右上の「<strong>Sign up</strong>」をクリック。以下を順番に入力していきます。</p>
+            <ul>
+              <li>メールアドレス</li>
+              <li>パスワード（15文字以上、または8文字以上＋数字＋小文字）</li>
+              <li>ユーザー名（これが公開URLに使われるので重要）</li>
+            </ul>
+            <p>認証パズルとメール認証コードを入力すれば完了です。</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-marker">ii</div>
+          <div class="step-body">
+            <h3>ユーザー名の決め方</h3>
+            <p>公開URLは必ず <code>https://ユーザー名.github.io/...</code> の形になります。つまり、ユーザー名がそのまま公開URLの一部になるので、じっくり考えて決めましょう。</p>
+            <ul>
+              <li>短く、英数字とハイフンのみ（日本語・記号はNG）</li>
+              <li>ビジネス名やブランド名に関連するものがおすすめ</li>
+              <li>一度決めたら変更しにくいので、愛着が持てる名前に</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="basic">
+      <div class="section-number">Chapter 04</div>
+      <h2>基本操作：ページを公開する</h2>
+
+      <p class="lead">
+        アカウントができたら、いよいよページを公開していきます。<br>
+        実際の操作は、<strong>たった4ステップ</strong>で完了します。
+      </p>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-marker">1</div>
+          <div class="step-body">
+            <h3>リポジトリ（箱）を作る</h3>
+            <p style="margin-bottom:16px;">リポジトリとは、<strong>ファイルを入れるフォルダ</strong>のこと。プロジェクトごとに1つ作ります。</p>
+
+            <h4>操作手順</h4>
+            <ul>
+              <li>ログイン後、画面右上の「＋」マーク →「New repository」をクリック</li>
+              <li>Repository name（リポジトリ名）を入力：英数字とハイフンで命名</li>
+              <li>公開設定：必ず「<strong>Public</strong>」を選択（GitHub Pagesは公開リポジトリ限定）</li>
+              <li>「Add a README file」にチェック（推奨）</li>
+              <li>下の「Create repository」ボタンをクリック</li>
+            </ul>
+
+            <div class="callout callout-tip">
+              <div class="callout-label">Tip</div>
+              <p>URLを第三者に知られたくない場合は、リポジトリ名に推測されにくい英数字を混ぜましょう（例：<code>my-project-k3m9p2</code>）。URLを知っている人だけがアクセスできる状態になります。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-marker">2</div>
+          <div class="step-body">
+            <h3>ファイルをアップロードする</h3>
+
+            <h4>操作手順</h4>
+            <ul>
+              <li>作ったリポジトリ画面の「Add file」→「Upload files」をクリック</li>
+              <li>パソコンからHTMLファイルをドラッグ＆ドロップ</li>
+              <li>画面下の「Commit changes」ボタンをクリック</li>
+            </ul>
+
+            <div class="callout callout-warn">
+              <div class="callout-label">Important</div>
+              <p>トップページとなるファイル名は、必ず <code>index.html</code> にしてください。これがルールです。画像やCSS、サブページは自由に追加できます。</p>
+            </div>
+
+            <h4>フォルダ構成の例</h4>
+            <div class="code-block">
+my-project/<br>
+├── index.html      <span class="comment">← トップページ（必須）</span><br>
+├── about.html      <span class="comment">← 別ページ（任意）</span><br>
+├── style.css       <span class="comment">← デザインファイル</span><br>
+└── images/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── hero.jpg    <span class="comment">← 画像</span>
+            </div>
+
+            <div class="callout">
+              <div class="callout-label">Note</div>
+              <p>「Commit（コミット）」とは「この変更を記録する」という意味。変更内容をメモ欄に書いておくと、後から履歴を見るときに便利です（例：「初回アップロード」）。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-marker">3</div>
+          <div class="step-body">
+            <h3>GitHub Pagesを有効化する</h3>
+            <p style="margin-bottom:16px;">ここが<strong>公開のスイッチ</strong>です。必ず実施してください。</p>
+
+            <h4>操作手順</h4>
+            <ul>
+              <li>リポジトリ画面の上部メニューから「<strong>Settings</strong>」をクリック</li>
+              <li>左メニューの「<strong>Pages</strong>」をクリック</li>
+              <li>「Build and deployment」セクションで、Source を「Deploy from a branch」に</li>
+              <li>Branch を「<strong>main</strong>」に、フォルダは「<strong>/ (root)</strong>」のまま</li>
+              <li>「Save」ボタンをクリック</li>
+            </ul>
+
+            <p style="margin-top:16px;">数分待つと、画面上部に公開URLが表示されます。</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-marker">4</div>
+          <div class="step-body">
+            <h3>URLを確認する</h3>
+
+            <h4>公開URLの形式</h4>
+            <div class="code-block">
+https://ユーザー名.github.io/リポジトリ名/
+            </div>
+
+            <p>ユーザー名の部分は自分のアカウント名、リポジトリ名の部分は手順1で作成した名前に置き換わります。</p>
+
+            <div class="callout callout-warn">
+              <div class="callout-label">Patience</div>
+              <p>初回の公開反映までは、<strong>3〜10分程度</strong>かかることがあります。「404 Not Found」が出ても焦らず、しばらく待ってから再度アクセスしてみてください。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="advanced">
+      <div class="section-number">Chapter 05</div>
+      <h2>応用：更新・追加・削除・履歴</h2>
+      <p style="color: var(--text-dim); margin-bottom: 32px;">日常運用でよく使う操作をまとめました。</p>
+
+      <h3>A. ファイルを修正する</h3>
+      <ul class="bullet-list">
+        <li>リポジトリ画面で編集したいファイル名をクリック</li>
+        <li>右上の鉛筆アイコン（Edit this file）をクリック</li>
+        <li>ブラウザ上で直接編集し、「Commit changes」で保存</li>
+        <li>1〜3分で公開ページにも反映されます</li>
+      </ul>
+
+      <h3>B. ファイルを追加する</h3>
+      <p style="color: var(--text-dim);">「Add file」→「Upload files」または「Create new file」から。ドラッグ＆ドロップでまとめて追加もできます。</p>
+
+      <h3>C. ファイルを削除する</h3>
+      <p style="color: var(--text-dim);">削除したいファイルをクリック → 右上のゴミ箱アイコン →「Commit changes」で確定。</p>
+
+      <h3>D. 過去のバージョンに戻す</h3>
+      <p style="color: var(--text-dim);">ファイル画面の「History」をクリック → 戻したい時点のコミットを選択 → 内容を確認して復元。</p>
+    </section>
+
+    <section class="section" id="share">
+      <div class="section-number">Chapter 06</div>
+      <h2>公開したページを共有する</h2>
+
+      <p class="lead">
+        公開されたURLは、<strong>LINEやDMでそのまま送るだけ</strong>。<br>
+        相手に特別な準備や登録は一切必要ありません。
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>アカウント登録</td><td>不要</td></tr>
+            <tr><td>GitHubログイン</td><td>不要</td></tr>
+            <tr><td>スマホ閲覧</td><td>可能</td></tr>
+            <tr><td>パスワード</td><td>なし（Publicリポジトリの場合）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="public">
+      <div class="section-number">Chapter 07</div>
+      <h2>外部公開・お客様に見せるときのポイント</h2>
+
+      <p class="lead">
+        GitHub Pagesで公開するページは、<strong>世界中の誰からもアクセスできる状態</strong>になります。<br>
+        お客様や受講生さんに見てもらう前に、ここだけは必ず確認しておきましょう。
+      </p>
+
+      <h3>公開前の最終チェックリスト</h3>
+      <ul class="bullet-list">
+        <li>個人情報・内部情報（電話番号、住所、未公開の金額など）が載っていないか</li>
+        <li>誤字脱字・リンク切れがないか、最初から最後まで目を通す</li>
+        <li><strong>スマホ・PC両方</strong>で表示確認をする（お客様の多くはスマホで開きます）</li>
+        <li>画像が重すぎて読み込みが遅くなっていないか</li>
+        <li>使用している画像・フォントの著作権は大丈夫か（商用利用OKか）</li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">Caution</div>
+        <p>Publicリポジトリは<strong>URLを知らなくても検索されればたどり着ける可能性</strong>があります。機密情報や限定公開の内容は載せないのが鉄則です。「知られても問題ないもの」だけを公開しましょう。</p>
+      </div>
+
+      <h3>お客様に見てもらうときの工夫</h3>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-num">01</div>
+          <div class="benefit-title">URLを短く・覚えやすくする</div>
+          <div class="benefit-desc">
+            リポジトリ名は公開URLの一部になります。お客様にシェアする前提なら、できるだけシンプルで短い名前にしましょう。長すぎると読み間違いや入力ミスの原因に。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">02</div>
+          <div class="benefit-title">QRコードを作って案内する</div>
+          <div class="benefit-desc">
+            チラシ・名刺・店頭POPなどに載せる場合は、URLをQRコード化すると便利。無料のQRコード作成サービスで、数秒で作れます。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">03</div>
+          <div class="benefit-title">開いたときの第一印象を整える</div>
+          <div class="benefit-desc">
+            ページを開いた瞬間に目に入る部分（ファーストビュー）は特に丁寧に。画像・タイトル・キャッチコピーで「これは何のページか」が3秒で伝わるように設計しましょう。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">04</div>
+          <div class="benefit-title">公開直後は自分で一度アクセスする</div>
+          <div class="benefit-desc">
+            公開してすぐに、自分のスマホや別のブラウザから実際にURLを開いて動作確認。「表示されない」「画像が出ない」などはここで気づけます。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">05</div>
+          <div class="benefit-title">更新したら必ず再確認</div>
+          <div class="benefit-desc">
+            お客様に送ったあとで修正した場合、キャッシュで古いページが表示されることも。更新後は一度スーパーリロードで最新状態を確認してから案内を。
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">Tip</div>
+        <p>お客様から「見られない」「URLが違う」と言われたときのために、<strong>自分でURLをコピーしてメモ帳などに貼る</strong>習慣をつけておくと安心です。入力ミスでURLを間違えて伝えるのを防げます。</p>
+      </div>
+    </section>
+
+    <section class="section" id="trouble">
+      <div class="section-number">Chapter 08</div>
+      <h2>よくあるつまずきと解決法</h2>
+
+      <div class="trouble">
+        <div class="trouble-title">ページが表示されない（404エラー）</div>
+        <ul class="trouble-solutions">
+          <li>トップページのファイル名が <code>index.html</code> になっているか確認</li>
+          <li>Pages設定のBranchが「main」になっているか確認</li>
+          <li>5〜10分待ってから再度アクセス</li>
+        </ul>
+      </div>
+
+      <div class="trouble">
+        <div class="trouble-title">画像が表示されない</div>
+        <ul class="trouble-solutions">
+          <li>ファイル名に日本語・スペースが入っていないか確認</li>
+          <li>HTML内のパス指定が正しいか確認（例：<code>images/hero.jpg</code>）</li>
+        </ul>
+      </div>
+
+      <div class="trouble">
+        <div class="trouble-title">更新が反映されない</div>
+        <ul class="trouble-solutions">
+          <li>ブラウザのスーパーリロード（Windows：Ctrl+F5 / Mac：Cmd+Shift+R）</li>
+          <li>1〜3分待ってから再確認</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="ai">
+      <div class="section-number">Chapter 09</div>
+      <h2>困ったら、AIに聞くのもおすすめ</h2>
+
+      <p class="lead">
+        GitHubに限らず、今の時代は<strong>ClaudeやChatGPTなどのAI</strong>が、とても頼もしい相談相手になります。<br>
+        「わからない」を抱え込まず、気軽に聞いてみる習慣が、上達への一番の近道です。
+      </p>
+
+      <h3>AIに聞けること（具体例）</h3>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-num">01</div>
+          <div class="benefit-title">エラーが出たときの原因と解決策</div>
+          <div class="benefit-desc">
+            「404エラーが出ました」「画像が表示されません」など、画面の状態をそのまま伝えれば、原因と対処法を提案してくれます。スクリーンショットを貼るとさらに精度アップ。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">02</div>
+          <div class="benefit-title">HTMLの編集・カスタマイズ</div>
+          <div class="benefit-desc">
+            「この部分の色を変えたい」「文字を大きくしたい」「ボタンを追加したい」など、やりたいことを日本語で伝えれば、HTMLコードを書いてくれます。コピペで即反映。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">03</div>
+          <div class="benefit-title">用語の意味を優しく教えてもらう</div>
+          <div class="benefit-desc">
+            「コミットって何？」「リポジトリとフォルダの違いは？」など、わからない言葉はその場で質問。専門用語も、自分のレベルに合わせて説明してくれます。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">04</div>
+          <div class="benefit-title">文章や見出しのブラッシュアップ</div>
+          <div class="benefit-desc">
+            公開前のページ原稿を「もっと読みやすく」「お客様に響く表現に」など、一緒に磨いていけます。ターゲット層を伝えるとさらに精度の高い提案が返ってきます。
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="benefit-num">05</div>
+          <div class="benefit-title">次にやるべきことの相談</div>
+          <div class="benefit-desc">
+            「ページを公開しました。次に何をすればいいですか？」と聞けば、運用や改善のアイデアまで提案してくれます。一人で抱え込まず、伴走者として活用しましょう。
+          </div>
+        </div>
+      </div>
+
+      <h3>AIに質問するときのコツ</h3>
+      <ul class="bullet-list">
+        <li><strong>やりたいこと</strong>をシンプルに伝える（例：「このHTMLのタイトルの色を赤にしたい」）</li>
+        <li>今<strong>起きている状況</strong>を具体的に書く（例：「保存したのに更新されません」）</li>
+        <li>HTMLコードやエラーメッセージは<strong>そのままコピペ</strong>して貼る</li>
+        <li>一度で完璧な答えが出なくても、<strong>追加で質問</strong>を重ねて調整していく</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">Mindset</div>
+        <p>「こんな初歩的なこと聞いていいのかな」と思う必要は一切ありません。AIは疲れも機嫌も持たず、何度聞いても丁寧に答えてくれます。<strong>わからないまま放置するのが一番もったいない</strong>ので、気軽に話しかけてみてください。</p>
+      </div>
+    </section>
+
+    <section class="section" id="summary">
+      <div class="section-number">Finale</div>
+      <h2>まとめ</h2>
+
+      <div class="summary">
+        <h3>最短4ステップで、あなたのページは公開できる</h3>
+        <ol>
+          <li>リポジトリを作る（Public設定で）</li>
+          <li><code>index.html</code> を含むファイル一式をアップロード</li>
+          <li>Settings → Pages → Branchを「main」に設定</li>
+          <li>数分待って、発行されたURLで確認</li>
+        </ol>
+      </div>
+
+      <p style="text-align:center; color: var(--text-dim); font-size: 15px; margin-top: 40px; line-height: 2; font-weight: 500;">
+        一度、自分の手で公開までやってみてください。<br>
+        2回目からは、5分でスマートに公開できるようになります。
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="ornament">✦</span>
+    Happy Publishing
+    <span class="ornament">✦</span>
+  </div>
+</footer>
+
+</body>
+</html>
